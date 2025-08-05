@@ -1,0 +1,55 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data files (keep structure, ignore data)
+data/raw/*.csv
+data/processed/*.csv
+data/processed/*.pkl
+
+# Model files (too large for git)
+models_saved/*.joblib
+models_saved/*.pkl
+
+# Reports (generated)
+reports/*.pdf
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Distribution
+dist/
+build/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Keep directories
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!models_saved/.gitkeep
+!reports/.gitkeep
