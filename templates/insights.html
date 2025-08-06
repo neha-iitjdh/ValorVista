@@ -1,0 +1,384 @@
+{% extends "base.html" %}
+
+{% block title %}Market Insights{% endblock %}
+
+{% block content %}
+<!-- Header Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-5 fw-bold mb-3">
+                    <i class="bi bi-graph-up me-3"></i>Market Insights
+                </h1>
+                <p class="lead opacity-90 mb-0">
+                    Explore feature importance, neighborhood analysis, and model performance metrics.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Insights Content -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Feature Importance -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">
+                            <i class="bi bi-bar-chart-fill text-primary me-2"></i>Feature Importance
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted mb-4">
+                            These are the most influential factors in determining property values according to our model.
+                        </p>
+                        <div id="featureImportanceChart" class="chart-container">
+                            <div class="text-center py-5">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Stats -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">
+                            <i class="bi bi-speedometer2 text-primary me-2"></i>Model Performance
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="metric-item mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">R² Score</span>
+                                <span class="fw-bold text-success">0.91</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-success" style="width: 91%"></div>
+                            </div>
+                        </div>
+                        <div class="metric-item mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">MAPE</span>
+                                <span class="fw-bold text-primary">4.8%</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-primary" style="width: 95.2%"></div>
+                            </div>
+                        </div>
+                        <div class="metric-item mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">RMSE</span>
+                                <span class="fw-bold text-info">$18,500</span>
+                            </div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">MAE</span>
+                                <span class="fw-bold text-warning">$12,300</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">
+                            <i class="bi bi-gear-fill text-primary me-2"></i>Model Info
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                                <div>
+                                    <strong>Algorithm</strong>
+                                    <div class="text-muted small">Gradient Boosting Regressor</div>
+                                </div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                                <div>
+                                    <strong>Estimators</strong>
+                                    <div class="text-muted small">500 trees</div>
+                                </div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                                <div>
+                                    <strong>Features</strong>
+                                    <div class="text-muted small">79+ engineered features</div>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-start">
+                                <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                                <div>
+                                    <strong>Training Data</strong>
+                                    <div class="text-muted small">1,460 properties</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Neighborhood Analysis -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">
+                            <i class="bi bi-geo-alt-fill text-primary me-2"></i>Neighborhood Price Guide
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted mb-4">
+                            Average property values by neighborhood. Prices reflect typical homes in each area.
+                        </p>
+                        <div class="row g-3" id="neighborhoodGrid">
+                            <!-- High-end neighborhoods -->
+                            <div class="col-md-4 col-lg-3">
+                                <div class="neighborhood-card premium">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Northridge Heights</h6>
+                                            <small class="text-muted">NridgHt</small>
+                                        </div>
+                                        <span class="badge bg-success">$316K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                                <div class="neighborhood-card premium">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Northridge</h6>
+                                            <small class="text-muted">NoRidge</small>
+                                        </div>
+                                        <span class="badge bg-success">$335K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                                <div class="neighborhood-card premium">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Stone Brook</h6>
+                                            <small class="text-muted">StoneBr</small>
+                                        </div>
+                                        <span class="badge bg-success">$310K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                                <div class="neighborhood-card premium">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Timber</h6>
+                                            <small class="text-muted">Timber</small>
+                                        </div>
+                                        <span class="badge bg-success">$242K</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mid-range neighborhoods -->
+                            <div class="col-md-4 col-lg-3">
+                                <div class="neighborhood-card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Somerset</h6>
+                                            <small class="text-muted">Somerst</small>
+                                        </div>
+                                        <span class="badge bg-primary">$226K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                                <div class="neighborhood-card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">College Creek</h6>
+                                            <small class="text-muted">CollgCr</small>
+                                        </div>
+                                        <span class="badge bg-primary">$198K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                                <div class="neighborhood-card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Gilbert</h6>
+                                            <small class="text-muted">Gilbert</small>
+                                        </div>
+                                        <span class="badge bg-primary">$192K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                                <div class="neighborhood-card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Crawford</h6>
+                                            <small class="text-muted">Crawfor</small>
+                                        </div>
+                                        <span class="badge bg-primary">$210K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                                <div class="neighborhood-card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Northwest Ames</h6>
+                                            <small class="text-muted">NWAmes</small>
+                                        </div>
+                                        <span class="badge bg-primary">$189K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                                <div class="neighborhood-card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">North Ames</h6>
+                                            <small class="text-muted">NAmes</small>
+                                        </div>
+                                        <span class="badge bg-primary">$145K</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Budget neighborhoods -->
+                            <div class="col-md-4 col-lg-3">
+                                <div class="neighborhood-card budget">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Old Town</h6>
+                                            <small class="text-muted">OldTown</small>
+                                        </div>
+                                        <span class="badge bg-warning text-dark">$128K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                                <div class="neighborhood-card budget">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Edwards</h6>
+                                            <small class="text-muted">Edwards</small>
+                                        </div>
+                                        <span class="badge bg-warning text-dark">$129K</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Features Detail -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">
+                            <i class="bi bi-lightbulb-fill text-primary me-2"></i>Key Insights
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="insight-card">
+                                    <div class="insight-icon">
+                                        <i class="bi bi-rulers"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Living Area Matters Most</h6>
+                                    <p class="text-muted small mb-0">
+                                        Above-ground living area is the strongest predictor of home value,
+                                        contributing approximately 15% to the model's decision.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="insight-card">
+                                    <div class="insight-icon">
+                                        <i class="bi bi-award"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Quality Over Size</h6>
+                                    <p class="text-muted small mb-0">
+                                        Overall quality rating has a significant impact. A 1-point increase
+                                        in quality can add 5-10% to home value.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="insight-card">
+                                    <div class="insight-icon">
+                                        <i class="bi bi-geo-alt"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Location Premium</h6>
+                                    <p class="text-muted small mb-0">
+                                        Premium neighborhoods like NridgHt and NoRidge command 40-60% higher
+                                        prices than average areas.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="insight-card">
+                                    <div class="insight-icon">
+                                        <i class="bi bi-calendar-check"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Age Impact</h6>
+                                    <p class="text-muted small mb-0">
+                                        Newer homes typically command premium prices, but well-maintained
+                                        older homes can still achieve strong valuations.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="insight-card">
+                                    <div class="insight-icon">
+                                        <i class="bi bi-house-add"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Basement Value</h6>
+                                    <p class="text-muted small mb-0">
+                                        Finished basement space adds value, but at a lower rate per sq ft
+                                        than above-ground living space.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="insight-card">
+                                    <div class="insight-icon">
+                                        <i class="bi bi-car-front"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Garage Capacity</h6>
+                                    <p class="text-muted small mb-0">
+                                        Two-car garages are standard. Three-car garages typically indicate
+                                        higher-end properties.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/insights.js') }}"></script>
+{% endblock %}
