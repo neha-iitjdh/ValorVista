@@ -19,9 +19,9 @@ data/raw/*.csv
 data/processed/*.csv
 data/processed/*.pkl
 
-# Model files (too large for git)
-models_saved/*.joblib
-models_saved/*.pkl
+# Model files - UNCOMMENT these lines if models are too large for git
+# models_saved/*.joblib
+# models_saved/*.pkl
 
 # Reports (generated)
 reports/*.pdf
