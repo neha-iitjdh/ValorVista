@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | ValorVista</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <i class="bi bi-house-heart-fill text-primary me-2 fs-4"></i>
+                <span class="fw-bold text-gradient">ValorVista</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="bi bi-calculator me-1"></i> Valuation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/batch.html"><i class="bi bi-stack me-1"></i> Batch</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/insights.html"><i class="bi bi-graph-up me-1"></i> Insights</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/about.html"><i class="bi bi-info-circle me-1"></i> About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="bg-gradient-primary text-white py-5">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-3"><i class="bi bi-info-circle me-3"></i>About ValorVista</h1>
+            <p class="lead opacity-90 mb-0">AI-powered real estate valuation platform.</p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-8">
+                    <div class="mb-5">
+                        <h2 class="fw-bold mb-4">Our Mission</h2>
+                        <p class="lead text-muted">ValorVista empowers buyers, sellers, and real estate professionals with instant, accurate property valuations powered by advanced machine learning.</p>
+                    </div>
+
+                    <div class="mb-5">
+                        <h2 class="fw-bold mb-4">How It Works</h2>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="step-card">
+                                    <div class="step-number">1</div>
+                                    <h5 class="fw-bold">Enter Property Details</h5>
+                                    <p class="text-muted mb-0">Input key features like living area, bedrooms, year built, and quality ratings.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="step-card">
+                                    <div class="step-number">2</div>
+                                    <h5 class="fw-bold">AI Analysis</h5>
+                                    <p class="text-muted mb-0">Our Gradient Boosting model processes 79+ features including engineered variables.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="step-card">
+                                    <div class="step-number">3</div>
+                                    <h5 class="fw-bold">Get Valuation</h5>
+                                    <p class="text-muted mb-0">Receive an instant valuation with 95% confidence intervals.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="step-card">
+                                    <div class="step-number">4</div>
+                                    <h5 class="fw-bold">Download Report</h5>
+                                    <p class="text-muted mb-0">Generate professional PDF reports with detailed analysis.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <h2 class="fw-bold mb-4">The Technology</h2>
+                        <ul class="feature-list">
+                            <li><i class="bi bi-check2-circle text-success me-2"></i><strong>Ensemble Learning:</strong> Combines 500 decision trees</li>
+                            <li><i class="bi bi-check2-circle text-success me-2"></i><strong>Feature Engineering:</strong> 20+ derived features</li>
+                            <li><i class="bi bi-check2-circle text-success me-2"></i><strong>Log Transformation:</strong> Handles price distribution</li>
+                            <li><i class="bi bi-check2-circle text-success me-2"></i><strong>Cross-Validation:</strong> 5-fold CV to prevent overfitting</li>
+                            <li><i class="bi bi-check2-circle text-success me-2"></i><strong>Uncertainty Estimation:</strong> Confidence intervals using staged predictions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-4">Quick Facts</h5>
+                            <div class="quick-fact mb-3"><i class="bi bi-cpu text-primary me-2"></i><span class="text-muted">500 estimators</span></div>
+                            <div class="quick-fact mb-3"><i class="bi bi-layers text-primary me-2"></i><span class="text-muted">79+ features</span></div>
+                            <div class="quick-fact mb-3"><i class="bi bi-bullseye text-primary me-2"></i><span class="text-muted">&lt;5% error</span></div>
+                            <div class="quick-fact mb-3"><i class="bi bi-lightning text-primary me-2"></i><span class="text-muted">&lt;1s response</span></div>
+                            <div class="quick-fact"><i class="bi bi-shield-check text-primary me-2"></i><span class="text-muted">95% confidence</span></div>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-4">Tech Stack</h5>
+                            <div class="mb-2"><span class="badge bg-primary me-2">Python</span><span class="badge bg-primary">Flask</span></div>
+                            <div class="mb-2"><span class="badge bg-success me-2">scikit-learn</span><span class="badge bg-success">NumPy</span></div>
+                            <div class="mb-2"><span class="badge bg-info me-2">Pandas</span><span class="badge bg-info">Matplotlib</span></div>
+                            <div><span class="badge bg-secondary me-2">Bootstrap 5</span><span class="badge bg-secondary">ReportLab</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-3">Ready to Get Started?</h2>
+            <p class="text-muted mb-4">Try our AI-powered valuation tool and get instant property estimates.</p>
+            <a href="/" class="btn btn-primary btn-lg px-5"><i class="bi bi-calculator me-2"></i>Start Valuation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container text-center">
+            <small class="text-muted">&copy; 2024 ValorVista. Powered by Machine Learning</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

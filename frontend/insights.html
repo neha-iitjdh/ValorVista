@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Insights | ValorVista</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <i class="bi bi-house-heart-fill text-primary me-2 fs-4"></i>
+                <span class="fw-bold text-gradient">ValorVista</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="bi bi-calculator me-1"></i> Valuation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/batch.html"><i class="bi bi-stack me-1"></i> Batch</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/insights.html"><i class="bi bi-graph-up me-1"></i> Insights</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html"><i class="bi bi-info-circle me-1"></i> About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="bg-gradient-primary text-white py-5">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-3"><i class="bi bi-graph-up me-3"></i>Market Insights</h1>
+            <p class="lead opacity-90 mb-0">Explore feature importance and neighborhood analysis.</p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-header bg-white py-3">
+                            <h5 class="mb-0"><i class="bi bi-bar-chart-fill text-primary me-2"></i>Feature Importance</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted mb-4">Top factors influencing property values.</p>
+                            <div id="featureImportanceChart">
+                                <div class="text-center py-5"><div class="spinner-border text-primary"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white py-3"><h5 class="mb-0"><i class="bi bi-speedometer2 text-primary me-2"></i>Model Performance</h5></div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-2"><span class="text-muted">R² Score</span><span class="fw-bold text-success">0.91</span></div>
+                                <div class="progress" style="height: 8px;"><div class="progress-bar bg-success" style="width: 91%"></div></div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-2"><span class="text-muted">MAPE</span><span class="fw-bold text-primary">4.8%</span></div>
+                                <div class="progress" style="height: 8px;"><div class="progress-bar bg-primary" style="width: 95%"></div></div>
+                            </div>
+                            <div class="mb-3"><div class="d-flex justify-content-between"><span class="text-muted">RMSE</span><span class="fw-bold text-info">$18,500</span></div></div>
+                            <div><div class="d-flex justify-content-between"><span class="text-muted">MAE</span><span class="fw-bold text-warning">$12,300</span></div></div>
+                        </div>
+                    </div>
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white py-3"><h5 class="mb-0"><i class="bi bi-gear-fill text-primary me-2"></i>Model Info</h5></div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Algorithm:</strong> <span class="text-muted">Gradient Boosting</span></li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Estimators:</strong> <span class="text-muted">500 trees</span></li>
+                                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Features:</strong> <span class="text-muted">79+ analyzed</span></li>
+                                <li><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Training:</strong> <span class="text-muted">1,460 properties</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Neighborhoods -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white py-3"><h5 class="mb-0"><i class="bi bi-geo-alt-fill text-primary me-2"></i>Neighborhood Price Guide</h5></div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-4 col-lg-3"><div class="neighborhood-card premium"><div class="d-flex justify-content-between"><div><h6 class="mb-1">Northridge Heights</h6><small class="text-muted">NridgHt</small></div><span class="badge bg-success">$316K</span></div></div></div>
+                                <div class="col-md-4 col-lg-3"><div class="neighborhood-card premium"><div class="d-flex justify-content-between"><div><h6 class="mb-1">Northridge</h6><small class="text-muted">NoRidge</small></div><span class="badge bg-success">$335K</span></div></div></div>
+                                <div class="col-md-4 col-lg-3"><div class="neighborhood-card premium"><div class="d-flex justify-content-between"><div><h6 class="mb-1">Stone Brook</h6><small class="text-muted">StoneBr</small></div><span class="badge bg-success">$310K</span></div></div></div>
+                                <div class="col-md-4 col-lg-3"><div class="neighborhood-card"><div class="d-flex justify-content-between"><div><h6 class="mb-1">Somerset</h6><small class="text-muted">Somerst</small></div><span class="badge bg-primary">$226K</span></div></div></div>
+                                <div class="col-md-4 col-lg-3"><div class="neighborhood-card"><div class="d-flex justify-content-between"><div><h6 class="mb-1">College Creek</h6><small class="text-muted">CollgCr</small></div><span class="badge bg-primary">$198K</span></div></div></div>
+                                <div class="col-md-4 col-lg-3"><div class="neighborhood-card"><div class="d-flex justify-content-between"><div><h6 class="mb-1">North Ames</h6><small class="text-muted">NAmes</small></div><span class="badge bg-primary">$145K</span></div></div></div>
+                                <div class="col-md-4 col-lg-3"><div class="neighborhood-card budget"><div class="d-flex justify-content-between"><div><h6 class="mb-1">Old Town</h6><small class="text-muted">OldTown</small></div><span class="badge bg-warning text-dark">$128K</span></div></div></div>
+                                <div class="col-md-4 col-lg-3"><div class="neighborhood-card budget"><div class="d-flex justify-content-between"><div><h6 class="mb-1">Edwards</h6><small class="text-muted">Edwards</small></div><span class="badge bg-warning text-dark">$129K</span></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container text-center">
+            <small class="text-muted">&copy; 2024 ValorVista. Powered by Machine Learning</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/insights.js"></script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ValorVista - AI-Powered Real Estate Valuation Platform. Get accurate property price predictions instantly.">
+    <title>ValorVista | AI Property Valuation</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <i class="bi bi-house-heart-fill text-primary me-2 fs-4"></i>
+                <span class="fw-bold text-gradient">ValorVista</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            <i class="bi bi-calculator me-1"></i> Valuation
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/batch.html">
+                            <i class="bi bi-stack me-1"></i> Batch
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/insights.html">
+                            <i class="bi bi-graph-up me-1"></i> Insights
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about.html">
+                            <i class="bi bi-info-circle me-1"></i> About
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center min-vh-50">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">
+                        Accurate Property Valuations<br>
+                        <span class="text-warning">Powered by AI</span>
+                    </h1>
+                    <p class="lead mb-4 opacity-90">
+                        Get instant, data-driven property price predictions with confidence intervals.
+                        Make informed real estate decisions with ValorVista.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#valuation-form" class="btn btn-warning btn-lg px-4">
+                            <i class="bi bi-calculator me-2"></i>Get Valuation
+                        </a>
+                        <a href="/about.html" class="btn btn-outline-light btn-lg px-4">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block text-center">
+                    <div class="hero-illustration">
+                        <i class="bi bi-houses display-1 opacity-25"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-4 bg-white border-bottom">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <h3 class="fw-bold text-primary mb-0">&lt;5%</h3>
+                        <small class="text-muted">Prediction Error</small>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <h3 class="fw-bold text-primary mb-0">79+</h3>
+                        <small class="text-muted">Features Analyzed</small>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <h3 class="fw-bold text-primary mb-0">95%</h3>
+                        <small class="text-muted">Confidence Level</small>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <h3 class="fw-bold text-primary mb-0">&lt;1s</h3>
+                        <small class="text-muted">Response Time</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valuation Form Section -->
+    <section id="valuation-form" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-3">Property Valuation</h2>
+                    <p class="text-muted">Enter your property details below to get an instant AI-powered valuation estimate.</p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-body p-4 p-lg-5">
+                            <form id="valuationForm">
+                                <!-- Basic Information -->
+                                <div class="form-section mb-4">
+                                    <h5 class="section-title mb-4">
+                                        <i class="bi bi-house-door text-primary me-2"></i>Basic Information
+                                    </h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Living Area (sq ft) <span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control form-control-lg" id="GrLivArea"
+                                                   name="GrLivArea" required min="100" max="15000" placeholder="e.g., 1500">
+                                            <div class="form-text">Above ground living area in square feet</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Lot Area (sq ft)</label>
+                                            <input type="number" class="form-control form-control-lg" id="LotArea"
+                                                   name="LotArea" min="500" max="500000" placeholder="e.g., 8500">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Year Built <span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control form-control-lg" id="YearBuilt"
+                                                   name="YearBuilt" required min="1800" max="2025" placeholder="e.g., 2005">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Overall Quality <span class="text-danger">*</span></label>
+                                            <select class="form-select form-select-lg" id="OverallQual" name="OverallQual" required>
+                                                <option value="">Select quality...</option>
+                                                <option value="1">1 - Very Poor</option>
+                                                <option value="2">2 - Poor</option>
+                                                <option value="3">3 - Fair</option>
+                                                <option value="4">4 - Below Average</option>
+                                                <option value="5">5 - Average</option>
+                                                <option value="6">6 - Above Average</option>
+                                                <option value="7" selected>7 - Good</option>
+                                                <option value="8">8 - Very Good</option>
+                                                <option value="9">9 - Excellent</option>
+                                                <option value="10">10 - Very Excellent</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Overall Condition <span class="text-danger">*</span></label>
+                                            <select class="form-select form-select-lg" id="OverallCond" name="OverallCond" required>
+                                                <option value="">Select condition...</option>
+                                                <option value="1">1 - Very Poor</option>
+                                                <option value="2">2 - Poor</option>
+                                                <option value="3">3 - Fair</option>
+                                                <option value="4">4 - Below Average</option>
+                                                <option value="5" selected>5 - Average</option>
+                                                <option value="6">6 - Above Average</option>
+                                                <option value="7">7 - Good</option>
+                                                <option value="8">8 - Very Good</option>
+                                                <option value="9">9 - Excellent</option>
+                                                <option value="10">10 - Very Excellent</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Rooms -->
+                                <div class="form-section mb-4">
+                                    <h5 class="section-title mb-4">
+                                        <i class="bi bi-door-open text-primary me-2"></i>Rooms & Bathrooms
+                                    </h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-3">
+                                            <label class="form-label">Bedrooms</label>
+                                            <input type="number" class="form-control form-control-lg" id="BedroomAbvGr"
+                                                   name="BedroomAbvGr" min="0" max="20" value="3">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class="form-label">Full Bathrooms</label>
+                                            <input type="number" class="form-control form-control-lg" id="FullBath"
+                                                   name="FullBath" min="0" max="10" value="2">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class="form-label">Half Bathrooms</label>
+                                            <input type="number" class="form-control form-control-lg" id="HalfBath"
+                                                   name="HalfBath" min="0" max="10" value="0">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class="form-label">Total Rooms</label>
+                                            <input type="number" class="form-control form-control-lg" id="TotRmsAbvGrd"
+                                                   name="TotRmsAbvGrd" min="1" max="20" value="6">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Advanced Options Toggle -->
+                                <div class="mb-4">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="collapse"
+                                            data-bs-target="#advancedOptions">
+                                        <i class="bi bi-gear me-2"></i>Advanced Options
+                                        <i class="bi bi-chevron-down ms-2"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Advanced Options -->
+                                <div class="collapse" id="advancedOptions">
+                                    <!-- Floors -->
+                                    <div class="form-section mb-4">
+                                        <h5 class="section-title mb-4">
+                                            <i class="bi bi-layers text-primary me-2"></i>Floor Areas
+                                        </h5>
+                                        <div class="row g-3">
+                                            <div class="col-md-4">
+                                                <label class="form-label">1st Floor (sq ft)</label>
+                                                <input type="number" class="form-control" id="1stFlrSF"
+                                                       name="1stFlrSF" min="100" max="10000" placeholder="e.g., 1000">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">2nd Floor (sq ft)</label>
+                                                <input type="number" class="form-control" id="2ndFlrSF"
+                                                       name="2ndFlrSF" min="0" max="10000" value="0">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">Basement (sq ft)</label>
+                                                <input type="number" class="form-control" id="TotalBsmtSF"
+                                                       name="TotalBsmtSF" min="0" max="10000" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Garage -->
+                                    <div class="form-section mb-4">
+                                        <h5 class="section-title mb-4">
+                                            <i class="bi bi-car-front text-primary me-2"></i>Garage
+                                        </h5>
+                                        <div class="row g-3">
+                                            <div class="col-md-4">
+                                                <label class="form-label">Garage Cars</label>
+                                                <input type="number" class="form-control" id="GarageCars"
+                                                       name="GarageCars" min="0" max="10" value="2">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">Garage Area (sq ft)</label>
+                                                <input type="number" class="form-control" id="GarageArea"
+                                                       name="GarageArea" min="0" max="5000" placeholder="e.g., 500">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">Garage Type</label>
+                                                <select class="form-select" id="GarageType" name="GarageType">
+                                                    <option value="Attchd" selected>Attached</option>
+                                                    <option value="Detchd">Detached</option>
+                                                    <option value="BuiltIn">Built-In</option>
+                                                    <option value="CarPort">Car Port</option>
+                                                    <option value="NA">No Garage</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Location -->
+                                    <div class="form-section mb-4">
+                                        <h5 class="section-title mb-4">
+                                            <i class="bi bi-geo-alt text-primary me-2"></i>Location & Style
+                                        </h5>
+                                        <div class="row g-3">
+                                            <div class="col-md-4">
+                                                <label class="form-label">Neighborhood</label>
+                                                <select class="form-select" id="Neighborhood" name="Neighborhood">
+                                                    <option value="NAmes" selected>North Ames</option>
+                                                    <option value="CollgCr">College Creek</option>
+                                                    <option value="OldTown">Old Town</option>
+                                                    <option value="Edwards">Edwards</option>
+                                                    <option value="Somerst">Somerset</option>
+                                                    <option value="Gilbert">Gilbert</option>
+                                                    <option value="NridgHt">Northridge Heights</option>
+                                                    <option value="Sawyer">Sawyer</option>
+                                                    <option value="NWAmes">Northwest Ames</option>
+                                                    <option value="SawyerW">Sawyer West</option>
+                                                    <option value="BrkSide">Brookside</option>
+                                                    <option value="Crawfor">Crawford</option>
+                                                    <option value="Mitchel">Mitchell</option>
+                                                    <option value="NoRidge">Northridge</option>
+                                                    <option value="Timber">Timberland</option>
+                                                    <option value="IDOTRR">Iowa DOT RR</option>
+                                                    <option value="ClearCr">Clear Creek</option>
+                                                    <option value="StoneBr">Stone Brook</option>
+                                                    <option value="SWISU">SW ISU</option>
+                                                    <option value="Blmngtn">Bloomington Heights</option>
+                                                    <option value="MeadowV">Meadow Village</option>
+                                                    <option value="BrDale">Briardale</option>
+                                                    <option value="Veenker">Veenker</option>
+                                                    <option value="NPkVill">Northpark Villa</option>
+                                                    <option value="Blueste">Bluestem</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">Building Type</label>
+                                                <select class="form-select" id="BldgType" name="BldgType">
+                                                    <option value="1Fam" selected>Single-family Detached</option>
+                                                    <option value="2FmCon">Two-family Conversion</option>
+                                                    <option value="Duplx">Duplex</option>
+                                                    <option value="TwnhsE">Townhouse End Unit</option>
+                                                    <option value="TwnhsI">Townhouse Inside Unit</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">House Style</label>
+                                                <select class="form-select" id="HouseStyle" name="HouseStyle">
+                                                    <option value="1Story" selected>One Story</option>
+                                                    <option value="1.5Fin">1.5 Story Finished</option>
+                                                    <option value="1.5Unf">1.5 Story Unfinished</option>
+                                                    <option value="2Story">Two Story</option>
+                                                    <option value="2.5Fin">2.5 Story Finished</option>
+                                                    <option value="2.5Unf">2.5 Story Unfinished</option>
+                                                    <option value="SFoyer">Split Foyer</option>
+                                                    <option value="SLvl">Split Level</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Features -->
+                                    <div class="form-section mb-4">
+                                        <h5 class="section-title mb-4">
+                                            <i class="bi bi-star text-primary me-2"></i>Additional Features
+                                        </h5>
+                                        <div class="row g-3">
+                                            <div class="col-md-3">
+                                                <label class="form-label">Fireplaces</label>
+                                                <input type="number" class="form-control" id="Fireplaces"
+                                                       name="Fireplaces" min="0" max="10" value="0">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="form-label">Pool Area (sq ft)</label>
+                                                <input type="number" class="form-control" id="PoolArea"
+                                                       name="PoolArea" min="0" max="1000" value="0">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="form-label">Wood Deck (sq ft)</label>
+                                                <input type="number" class="form-control" id="WoodDeckSF"
+                                                       name="WoodDeckSF" min="0" max="2000" value="0">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="form-label">Open Porch (sq ft)</label>
+                                                <input type="number" class="form-control" id="OpenPorchSF"
+                                                       name="OpenPorchSF" min="0" max="1000" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5" id="submitBtn">
+                                        <i class="bi bi-calculator me-2"></i>Get Valuation
+                                    </button>
+                                    <button type="reset" class="btn btn-outline-secondary btn-lg px-4 ms-2">
+                                        <i class="bi bi-arrow-counterclockwise me-2"></i>Reset
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section (Hidden by default) -->
+    <section id="resultsSection" class="py-5 d-none">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Main Result Card -->
+                    <div class="card shadow-lg border-0 result-card mb-4">
+                        <div class="card-body p-5 text-center">
+                            <div class="mb-3">
+                                <i class="bi bi-check-circle-fill text-success display-4"></i>
+                            </div>
+                            <h3 class="text-muted mb-3">Estimated Market Value</h3>
+                            <h1 class="display-3 fw-bold text-primary mb-3" id="predictionValue">$0</h1>
+                            <p class="lead text-muted mb-4" id="confidenceInterval">
+                                95% Confidence: $0 - $0
+                            </p>
+                            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                                <button class="btn btn-outline-primary" id="downloadReportBtn">
+                                    <i class="bi bi-file-pdf me-2"></i>Download Report
+                                </button>
+                                <button class="btn btn-outline-secondary" id="newValuationBtn">
+                                    <i class="bi bi-plus-circle me-2"></i>New Valuation
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Details Cards -->
+                    <div class="row g-4">
+                        <!-- Property Summary -->
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-white border-0 pt-4">
+                                    <h5 class="mb-0">
+                                        <i class="bi bi-house text-primary me-2"></i>Property Summary
+                                    </h5>
+                                </div>
+                                <div class="card-body" id="propertySummary">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Factors -->
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-white border-0 pt-4">
+                                    <h5 class="mb-0">
+                                        <i class="bi bi-bar-chart text-primary me-2"></i>Key Value Factors
+                                    </h5>
+                                </div>
+                                <div class="card-body" id="keyFactors">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-3">Why Choose ValorVista?</h2>
+                    <p class="text-muted">Our advanced machine learning model analyzes 79+ property features to deliver accurate valuations.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                        </div>
+                        <h5 class="fw-bold">Instant Results</h5>
+                        <p class="text-muted mb-0">Get property valuations in under a second. No waiting, no delays.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h5 class="fw-bold">High Accuracy</h5>
+                        <p class="text-muted mb-0">Gradient Boosting model achieving less than 5% mean absolute error.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h5 class="fw-bold">Confidence Intervals</h5>
+                        <p class="text-muted mb-0">Every prediction comes with 95% confidence bounds for transparency.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-house-heart-fill text-primary me-2 fs-4"></i>
+                        <span class="fs-5 fw-bold">ValorVista</span>
+                    </div>
+                    <p class="text-muted">
+                        AI-powered real estate valuation platform delivering accurate property price predictions.
+                    </p>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/" class="text-muted text-decoration-none">Valuation</a></li>
+                        <li class="mb-2"><a href="/batch.html" class="text-muted text-decoration-none">Batch Processing</a></li>
+                        <li class="mb-2"><a href="/insights.html" class="text-muted text-decoration-none">Market Insights</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Features</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><span class="text-muted">Instant Valuations</span></li>
+                        <li class="mb-2"><span class="text-muted">Confidence Intervals</span></li>
+                        <li class="mb-2"><span class="text-muted">PDF Reports</span></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Technology</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-secondary">Gradient Boosting</span>
+                        <span class="badge bg-secondary">scikit-learn</span>
+                        <span class="badge bg-secondary">Flask</span>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <small class="text-muted">&copy; 2024 ValorVista. All rights reserved.</small>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <small class="text-muted">Powered by Machine Learning</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Modal -->
+    <div class="modal fade" id="loadingModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0">
+                <div class="modal-body text-center py-5">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h5>Analyzing Property...</h5>
+                    <p class="text-muted mb-0">Our AI is processing your property data</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Config -->
+    <script src="js/config.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/valuation.js"></script>
+</body>
+</html>
